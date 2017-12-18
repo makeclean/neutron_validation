@@ -13,9 +13,19 @@ def write_input_for_code(nuc,code):
     code - the name of the code to write the benchmark 
     for
     """
-    
-    
 
+    filename = nuc
+
+    if code == 'MCNP':
+        mcnp = McnpWriter('mcnp_template',nuc)
+        mcnp.write_mcnp(filename)
+    if code == 'SERPENT':
+        serp = SerpentWriter('serpent_template',nuc)
+        serp.write_serpent(filename)
+    if code == 'OPENMC':
+        openmc = OpenMCWriter('openmc_template',nuc)
+        openmc.write_geometry(filename)
+        
     return
 
 def make_directory_for_code(nuc,code):
